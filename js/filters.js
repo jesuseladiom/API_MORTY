@@ -3,7 +3,6 @@ let buscar = (evt) => {
     //evt.preventDefault();
     let name = document.querySelector("#inputName").value.toLowerCase();
     let filtrados =personajes.filter((personaje)=>{
-        //let restaurant_minus= restaurant.businessname.toLowerCase()
         return personaje.name.toLowerCase().includes(name);
     });
     render(filtrados);
@@ -11,7 +10,6 @@ let buscar = (evt) => {
 
 let categoria= (nombre, tipo) => {
     let filtro;
-    //console.log(nombre);
     if (tipo=='status')
         filtro = personajes.filter((personaje)=>{
             return personaje.status == nombre  });
@@ -24,7 +22,6 @@ let categoria= (nombre, tipo) => {
 
 
 let orden = ()=>{
-
     if (ordenar=="A") {
         ordenar="D";
         personajes.sort(function (a, b){
@@ -100,52 +97,3 @@ document.querySelector("#topx").addEventListener("click",function(evt){
     evt.preventDefault();
     ranking();
 }); 
-
-/*  son para el menu lateral */
-/* document.querySelector("#todos1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    render(personajes);
-}); 
-
-document.querySelector("#vivos1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    categoria('Alive', 'status');
-}); 
-
-document.querySelector("#muertos1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    categoria('Dead', 'status');
-}); 
-
-document.querySelector("#masculino1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    categoria('Male', 'gender');
-}); 
-
-document.querySelector("#femenino1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    categoria('Female', 'gender');
-}); 
-
-document.querySelector("#ordenar1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    orden();
-}); 
-
-document.querySelector("#favoritos1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    buscafavoritos();
-}); 
-
-document.querySelector("#topx1").addEventListener("click",function(evt){
-    evt.preventDefault();
-    activarDesactivar();
-    ranking();
-});  */

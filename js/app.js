@@ -1,6 +1,7 @@
 let personajes=[];
 let ordenar="A";
 let paginacion;
+let numeroPages= 5;
 
 const modal = document.querySelector("#exampleModal");
 const rName = document.querySelector("#personaje-name");
@@ -13,20 +14,17 @@ const rImage = document.querySelector("#personaje-image");
 const rEpisodios = document.querySelector("#personaje-episodios");
 
 
-for (let i=1; i<=1; i++) {
+for (let i=1; i<=numeroPages; i++) {
     paginacion="https://rickandmortyapi.com/api/character?page=" + i;
-    //console.log(paginacion);
     
+    // carga los datos de la Api
     fetch(paginacion)
     .then((response)=>response.json())
     .then(data => {
         for (let j in data.results) {
             personajes.push(data.results[j]);
-            //console.log(data.results[i]);
         }
-        //render(personajes);
-        //console.log(i);
-        if (i==1) render(personajes);
+        if (i==numeroPages) render(personajes);  // para esperar a que cargue todo
 
     });
 
@@ -44,6 +42,7 @@ let render = (personajesArr) => {
         let simbol_status= (personajesArr[i].status=="Alive") ? '<span class="tag-vivo"></span>' : '<span class="tag-muerto"></span>' ;
         if (personajesArr[i].status=="unknown")
             simbol_status= '<span class="tag-desconocido"></span>'
+
         document.querySelector("#resultados").innerHTML+= `
                 <div class="col-sm12 col-md-6 mb-3" data-id="${personajesArr[i].id}" 
                     data-name="${personajesArr[i].name}" onclick="mostrarModal(${personajesArr[i].id})">
@@ -71,8 +70,6 @@ let render = (personajesArr) => {
 }
 
 const agregaFav = (id) => {
-    //console.log(id);
-    //alert(id);
     saveFavorites(id);
 }
 
@@ -80,10 +77,10 @@ const llenarModal = (personaje) => {
     const { name, origin, location, image, status, species, gender, episode } = personaje[0];
 
     paginacion=episode[0];  //primer episodio
-    //console.log(paginacion);
     
     let first_episode;
 
+    //lee informacion del primer episodio
     fetch(paginacion)
     .then((response)=>response.json())
     .then(data => {
@@ -109,7 +106,6 @@ const mostrarModal = (id) => {
       rName.innerText = "";
       rOrigen.innerText = "";
       //rUbicacion.innerText = "";
-
       //modal.classList.toggle("modal");
       // document.querySelector("#restaurant-name").innerText = name;
     
@@ -119,35 +115,3 @@ const mostrarModal = (id) => {
            llenarModal(filtro);
         }
     };
-
-
-
-
-/*
-let burguer= -1;
-let botonPulsado=0;
-
-const btnToggle = document.querySelector('.toggle-btn-p');
-
- btnToggle.addEventListener('click', function () {
-    burguer=burguer*-1;
-    document.getElementById('sidebar-p').classList.toggle('active');
-    botonPulsado=0;
-}); 
-
- window.onscroll = function() {
-    if (burguer==1) {
-        activarDesactivar();
-    }
-};
-
- 
-const activarDesactivar= () => {
-    burguer=burguer*-1;
-    document.getElementById('sidebar-p').classList.toggle('active');
-    botonPulsado=0;
-
-}
-*/
-
-    

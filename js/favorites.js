@@ -6,7 +6,6 @@ if (favoritesStorage) {
 }
 
 
-
 const saveFavorites = (id) => {
 
       let pos= favorites.indexOf(parseInt(id));
@@ -14,12 +13,10 @@ const saveFavorites = (id) => {
       if (pos==-1)
       {
           favorites.push(parseInt(id));
-          //button.innerText = "❤️";
       }
       else
       {
           favorites.splice(pos, 1);   //borra el elemento de favoritos
-          //button.innerText = "💛";
       }
 
       localStorage.setItem("@favorites", JSON.stringify(favorites));
@@ -33,14 +30,10 @@ const reloadFavorites = () => {
       document.querySelectorAll('[data-type*="favorites"]')
     );
 
-    //console.log(buttons)
     buttons.forEach((button, i) => {
-      //console.log(button);
       let idx = parseInt(button.dataset.id);  //obtiene el id del boton
-      //console.log(idx);
 
       let posicion= favorites.indexOf(idx);
-      //console.log(posicion);
        if (posicion!=-1) {
           button.innerText = "❤️" ;
           button.dataset.favbool='S';
