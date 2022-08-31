@@ -1,0 +1,56 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#sidebar-p {
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  background: black;
+  left: -200px;
+  transition: all 500ms linear;
+  z-index: 500;
+}
+
+#sidebar-p.active {
+  left: 0px;
+}
+
+#sidebar-p ul li {
+  color: rgba(230, 230, 230, .9);
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(100, 100, 100, .3);
+  text-align: center;
+}
+
+#sidebar-p ul li:hover {
+  color: red;
+  background-color: white ;
+  cursor: pointer;
+
+}
+
+.logo-p {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto; 
+}
+
+#sidebar-p .toggle-btn-p {
+  position: absolute;
+  left: 220px;
+  top: 0px;
+  cursor: pointer;
+}
+
+#sidebar-p .toggle-btn-p span {
+  display: block;
+  width: 40px;
+  text-align: center;
+  font-size: 30px;
+  border: 1px solid white;
+  color: white;
+
+}

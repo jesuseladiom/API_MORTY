@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">  
+  
+<body>
+
+  <header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">API RICK AND MORTY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon bg-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categoria
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a id="todos" class="dropdown-item" href="#"><i class="fa-solid fa-people-group"></i> Todos</a></li>
+              <li><a id="vivos" class="dropdown-item" href="#"><i class="fa-solid fa-person"></i> Vivos</a></li>
+              <li><a id="muertos" class="dropdown-item" href="#"><i class="fa-solid fa-person-circle-xmark"></i> Muertos</a></li>
+              <li><a id="femenino" class="dropdown-item" href="#"><i class="fa-solid fa-child-dress"></i> Femenino</a></li>
+              <li><a id="masculino" class="dropdown-item" href="#"><i class="fa-solid fa-child"></i> Masculino</a></li>
+              <li><a id="favoritos" class="dropdown-item" href="#"><i class="fa-brands fa-diaspora"></i> Favoritos</a></li>
+              <li><a id="ordenar" class="dropdown-item" href="#"><i class="fa-solid fa-filter"></i> Ordenar</a></li>
+              <li><a id="topx" class="dropdown-item" href="#"><i class="fa-solid fa-medal"></i> 30++</a></li>
+            </ul>
+          </li>
+        </ul>
+          <form>
+            <input id="inputName" class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+          </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- 
+
+   <div id="sidebar-p">
+        <div class="toggle-btn-p">
+          <span>&#9776</span>
+        </div>
+  
+        <ul>
+          <li>
+            <img src="images/logo.jpg" alt="Logo Fazt" class="logo-p">
+          </li>
+          
+          <li id="todos1"><i class="fa-solid fa-people-group"></i> Todos</li>
+          <li id="vivos1"><i class="fa-solid fa-person"></i> Vivos</li>
+          <li id="muertos1"><i class="fa-solid fa-person-circle-xmark"></i> Muertos</li>
+          <li id="femenino1"><i class="fa-solid fa-child-dress"></i> Femenino</li>
+          <li id="masculino1"><i class="fa-solid fa-child"></i> Masculino</li>
+          <li id="favoritos1"><i class="fa-brands fa-diaspora"></i> Favoritos</li>
+          <li id="ordenar1"><i class="fa-solid fa-filter"></i> Ordenar</li>
+          <li id="topx1"><i class="fa-solid fa-medal"></i> Ranking</li>
+        </ul>
+    </div> 
+      
+    <header class="bg-dark d-block"> 
+
+      <div class="d-flex justify-content-between align-content-center">
+        <h3 class="text-start text-white pt-2" style="width:20%"></h3>
+        <input type="text" class="form-control buscar" id="inputName2" 
+              placeholder="Buscar..." aria-label="First Name">
+              <h3 class="text-start text-white pt-2" style="width:20%"></h3>
+            </div>
+
+          <div class="d-flex justify-content-around flex-row">
+            <div class="d-flex">
+              <!-- <form action="">
+                <label for="inputName">Nombre</label>
+                <input type="text" class="form-control mb-5" id="inputName" 
+                placeholder="Buscar..." aria-label="First Name">
+              </form> 
+            </div>
+            <div class="d-flex">
+              <form action="">
+                <label for="inputName">Nombre</label>
+              </form>
+            </div>
+            <div class="d-flex">
+              <!-- <form action="">
+                <label for="inputName">Nombre</label>
+                <input type="text" class="form-control mb-5" id="inputName" 
+                placeholder="Buscar..." aria-label="First Name">
+              </form> 
+
+            </div>
+          </div>
+            
+            
+            <nav class="nav nav-pills justify-content-around">
+                <a id="todos" class="nav-link mb-3 text-center" aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/4252/4252311.png" alt="">
+                    <p class="d-flex justify-content-center align-content-center">Todos</p></a>
+                
+                <a id="vivos" class="nav-link bg-white mb-3 text-center" aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/5667/5667030.png" alt="">
+                    <p class="flex justify-content-center align-content-center">Vivos</p></a>
+                        
+                <a id="muertos" class="nav-link bg-white mb-3 text-center" aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/6980/6980939.png" alt="">
+                    <p class="flex justify-content-center align-content-center">Muertos</p></a>
+                        
+                <a id="femenino" class="nav-link bg-white mb-3 text-center" aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/2335/2335230.png" alt="">
+                    <p class="flex justify-content-center align-content-center">Femenino</p></a>
+                
+                <a id="masculino" class="nav-link bg-white mb-3 text-center" aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/3439/3439380.png" alt="">
+                    <p class="flex justify-content-center align-content-center">Masculino</p></a>
+                
+                <a id="favoritos" class="nav-link bg-white mb-3 text-center " aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="">
+                    <p class="flex justify-content-center align-content-center">Favoritos</p></a>
+                    
+                <a id="ordenar" class="nav-link bg-white mb-3 text-center" aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/3641/3641242.png" alt="">
+                    <p class="flex justify-content-center align-content-center">Ordenar</p></a>
+                     
+                <a id="topx" class="nav-link bg-white mb-3 text-center" aria-current="page" href="#"><img src="https://cdn-icons-png.flaticon.com/512/15/15643.png" alt="">
+                        <p class="flex justify-content-center align-content-center">30++</p></a>
+            </nav> 
+            
+    <!-- </header> -->
+
+    <!-- las tarjeta de cada transformers -->
+    <main class="bg-dark text-white py-5">
+        <div class="container container-p py-3">
+
+            <div id="resultados" class="row">
+
+                
+                <div class="col-sm12 col-md-6 mb-3">
+                    <div class="card bg-secondary flex-row">
+                        <div class="w-50">
+                            <img src="images/201.jpg" class="img-fluid object-fit" alt="">
+                        </div>
+                        <div class="card-body w-50">
+                            <h2 class="card-title">Optimus Prime</h2>
+                            <p>Optimus Prime</p>
+                            <p>Primera Aparicion: Transformers</p>
+                            <p>Descripcion:</p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Mas Info
+                              </button>                        
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+ <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                  <h3 class="modal-title text-black text-center" id="personaje-name">TITULO</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                              <!-- card -->
+                              <div class="col mb-3">
+                                  <div class="card bg-secondary flex-row">
+                                      <div class="">
+                                          <img id="personaje-image" src="" class="img-fluid object-fit" alt="">
+                                      </div>
+                                      <div class="card-body">
+                                          <h5 class="card-title" id="personaje-status">status</h5>
+                                          <p id="personaje-originario">Origen</p>
+                                          <p id="personaje-sexo">sexo:</p>
+                                          <p id="personaje-episodios">episodios:</p>
+                                      </div>
+                                  </div>
+                              </div>
+                  </div>
+              </div>
+              </div>
+            </div>       
+
+      </div>
+
+    </main>
+
+    <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>   
+    <script src="https://kit.fontawesome.com/42a55ff66d.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+    <script src="js/filters.js"></script> 
+    <script src="js/favorites.js"></script> 
+        
+
+</body>
+</html>
