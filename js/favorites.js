@@ -40,6 +40,7 @@ const reloadFavorites = () => {
         }
         else {
             button.innerText = "💛" ;
+            document.querySelector('#fav-modal').innerText="💛" ;
             button.dataset.favbool='N';
         }
     });

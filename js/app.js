@@ -27,10 +27,7 @@ for (let i=1; i<=numeroPages; i++) {
         if (i==numeroPages) render(personajes);  // para esperar a que cargue todo
 
     });
-
 }
-
-
 
 let render = (personajesArr) => {
 
@@ -59,7 +56,7 @@ let render = (personajesArr) => {
                             <p>Última Ubicación: <br>${personajesArr[i].location.name}</p>
                             <p><i class="fa-solid fa-video"></i> ${personajesArr[i].episode.length}</p>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Más Info.</button>                        
-                            <button id="fav${personajesArr[i].id}" data-favbool="n" data-type="favorites" data-id="${personajesArr[i].id}" type="button" class="btn  tag-fav" onclick="agregaFav(${personajesArr[i].id})">💛</button>                        
+                            <button id="fav${personajesArr[i].id}" data-favbool="n" data-type="favorites" data-id="${personajesArr[i].id}" type="button" class="btn tag-fav" onclick="agregaFav(${personajesArr[i].id})">💛</button>                        
                         </div>
                     </div>
                 </div>`;
@@ -74,7 +71,7 @@ const agregaFav = (id) => {
 }
 
 const llenarModal = (personaje) => {
-    const { name, origin, location, image, status, species, gender, episode } = personaje[0];
+    const { id, name, origin, location, image, status, species, gender, episode } = personaje[0];
 
     paginacion=episode[0];  //primer episodio
     
@@ -85,7 +82,6 @@ const llenarModal = (personaje) => {
     .then((response)=>response.json())
     .then(data => {
         first_episode= data;
-        console.log(first_episode.name);
         rEpisodios.innerHTML= `Visto por Primera vez en:<br>${first_episode.name}`;
     });
     
@@ -99,6 +95,19 @@ const llenarModal = (personaje) => {
     rOrigen.innerHTML = `Originario de:  <strong>${origin.name}</strong><br>Última Ubicación: <strong>${location.name}</strong>`;
     //rUbicacion.innerText = `Ultima Ubicacion:\n ${location.name}`;
     rImage.setAttribute('src', image)
+
+    //revisa si es favorito
+    let botonFav= document.querySelector("#fav-modal");
+    botonFav.dataset.id= id;
+
+    let posicion= favorites.indexOf(parseInt(id));
+     if (posicion!=-1) {
+        botonFav.innerText = "❤️" ;
+      }
+      else {
+        botonFav.innerText = "💛" ;
+      }
+
   };
     
 const mostrarModal = (id) => {
@@ -115,3 +124,20 @@ const mostrarModal = (id) => {
            llenarModal(filtro);
         }
     };
+
+document.querySelector('#fav-modal').addEventListener('click', ()=> {
+    let botonFav= document.querySelector("#fav-modal");
+
+    saveFavorites(botonFav.dataset.id);
+    let idx = parseInt(botonFav.dataset.id);  //obtiene el id del boton
+
+    //revisa si es favorito
+    let posic= favorites.indexOf(idx);
+    console.log(favorites);
+     if (posic!=-1) {
+        document.querySelector("#fav-modal").innerText = "❤️" ;
+      }
+      else {
+        document.querySelector("#fav-modal").innerText = "💛" ;
+      }
+})
