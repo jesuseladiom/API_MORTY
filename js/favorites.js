@@ -1,9 +1,15 @@
 let favorites = [];
-let favoritesStorage = localStorage.getItem("@favorites");
 
-if (favoritesStorage) {
-  favorites = JSON.parse(favoritesStorage);
-}
+const refreshFavoritos= () => {
+
+    favorites = [];
+    let favoritesStorage = localStorage.getItem("@favorites");
+
+    if (favoritesStorage) {
+      favorites = JSON.parse(favoritesStorage);
+    }
+  
+};
 
 const buscarFavoritos= (id) => {
     let pos= favorites.indexOf(parseInt(id));
@@ -12,6 +18,8 @@ const buscarFavoritos= (id) => {
 }
 
 const saveFavorites = (id) => {
+
+      refreshFavoritos();
 
       let posicion= favorites.indexOf(parseInt(id));
       if (buscarFavoritos(parseInt(id)))
@@ -25,7 +33,8 @@ const saveFavorites = (id) => {
 
 const reloadFavorites = () => {
 
-    let storage = JSON.parse(favoritesStorage);
+    refreshFavoritos();
+
     let buttons = Array.from(
       document.querySelectorAll('[data-type*="favorites"]')
     );
@@ -45,7 +54,7 @@ const reloadFavorites = () => {
     });
 };
 
-
+refreshFavoritos();
 
 
 

@@ -40,6 +40,8 @@ let orden = ()=>{
 let opcionFavoritos= () => {
     let filtro=[];
 
+    refreshFavoritos();
+
     personajes.forEach(personaje => {
         let valor= personaje.id;
         if (favorites.includes(parseInt(valor)))
