@@ -37,12 +37,12 @@ let orden = ()=>{
     render(personajes);
 };
 
-let buscafavoritos= () => {
+let opcionFavoritos= () => {
     let filtro=[];
 
     personajes.forEach(personaje => {
         let valor= personaje.id;
-        if (favorites.includes(valor))
+        if (favorites.includes(parseInt(valor)))
             filtro.push(personaje);  //agregando los favoritos
     });
 
@@ -90,7 +90,7 @@ document.querySelector("#ordenar").addEventListener("click",function(evt){
 
 document.querySelector("#favoritos").addEventListener("click",function(evt){
     evt.preventDefault();
-    buscafavoritos();
+    opcionFavoritos();
 }); 
 
 document.querySelector("#topx").addEventListener("click",function(evt){

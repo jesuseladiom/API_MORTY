@@ -56,7 +56,7 @@ let render = (personajesArr) => {
                             <p>Última Ubicación: <br>${personajesArr[i].location.name}</p>
                             <p><i class="fa-solid fa-video"></i> ${personajesArr[i].episode.length}</p>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Más Info.</button>                        
-                            <button id="fav${personajesArr[i].id}" data-favbool="n" data-type="favorites" data-id="${personajesArr[i].id}" type="button" class="btn tag-fav" onclick="agregaFav(${personajesArr[i].id})">💛</button>                        
+                            <button id="fav${personajesArr[i].id}" data-favbool="n" data-type="favorites" data-id="${personajesArr[i].id}" type="button" class="btn tag-fav" onclick="saveFavorites(${personajesArr[i].id})">💛</button>                        
                         </div>
                     </div>
                 </div>`;
@@ -64,10 +64,6 @@ let render = (personajesArr) => {
 
     reloadFavorites();
 
-}
-
-const agregaFav = (id) => {
-    saveFavorites(id);
 }
 
 const llenarModal = (personaje) => {
@@ -132,12 +128,9 @@ document.querySelector('#fav-modal').addEventListener('click', ()=> {
     let idx = parseInt(botonFav.dataset.id);  //obtiene el id del boton
 
     //revisa si es favorito
-    let posic= favorites.indexOf(idx);
-    console.log(favorites);
-     if (posic!=-1) {
+    if (buscarFavoritos(idx))
         document.querySelector("#fav-modal").innerText = "❤️" ;
-      }
-      else {
+    else
         document.querySelector("#fav-modal").innerText = "💛" ;
-      }
+
 })

@@ -5,19 +5,19 @@ if (favoritesStorage) {
   favorites = JSON.parse(favoritesStorage);
 }
 
+const buscarFavoritos= (id) => {
+    let pos= favorites.indexOf(parseInt(id));
+    return pos==-1 ? false : true;
+
+}
 
 const saveFavorites = (id) => {
 
-      let pos= favorites.indexOf(parseInt(id));
-
-      if (pos==-1)
-      {
-          favorites.push(parseInt(id));
-      }
+      let posicion= favorites.indexOf(parseInt(id));
+      if (buscarFavoritos(parseInt(id)))
+        favorites.splice(posicion, 1);   //borra el elemento de favoritos
       else
-      {
-          favorites.splice(pos, 1);   //borra el elemento de favoritos
-      }
+        favorites.push(parseInt(id));
 
       localStorage.setItem("@favorites", JSON.stringify(favorites));
       reloadFavorites();
@@ -33,16 +33,15 @@ const reloadFavorites = () => {
     buttons.forEach((button, i) => {
       let idx = parseInt(button.dataset.id);  //obtiene el id del boton
 
-      let posicion= favorites.indexOf(idx);
-       if (posicion!=-1) {
-          button.innerText = "❤️" ;
-          button.dataset.favbool='S';
-        }
-        else {
-            button.innerText = "💛" ;
-            document.querySelector('#fav-modal').innerText="💛" ;
-            button.dataset.favbool='N';
-        }
+      if (buscarFavoritos(idx)) {
+        button.innerText = "❤️" ;
+        button.dataset.favbool='S';
+      }
+      else {
+        button.innerText = "💛" ;
+        button.dataset.favbool='N';
+      }
+
     });
 };
 
